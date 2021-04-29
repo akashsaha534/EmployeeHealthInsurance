@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC  
+          "-//Hibernate/Hibernate Configuration DTD 3.0//EN"  
+          "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">  
+  
+<hibernate-configuration>  
+  
+    <session-factory>  
+        <property name="hibernate.hbm2ddl.auto">update</property>  
+        <property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>  
+        <property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:xe</property>  
+        <property name="hibernate.connection.username">AKASH</property>  
+        <property name="hibernate.connection.password">akki</property>  
+        <property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>  
+    <mapping resource="Login.hbm.xml"/>    
+    <mapping resource="Employee.hbm.xml"/>   
+    <mapping resource="Health_Insurance.hbm.xml"/>   
+    <mapping resource="Request.hbm.xml"/>   
+    <mapping resource="Policy.hbm.xml"/>   
+    <mapping resource="Bank.hbm.xml"/> 
+    <mapping resource="Dependent.hbm.xml"/>     
+    <mapping resource="TPALogin.hbm.xml"/> 
+    </session-factory>  
+  
+</hibernate-configuration>

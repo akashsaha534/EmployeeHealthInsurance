@@ -1,0 +1,60 @@
+
+div.block{
+	display: block;
+	width: 100%;
+	margin: 0;
+	text-align: left;
+	background-color: white;
+	height:500px;
+}
+.verticle{
+	float:left;
+	display: block;
+	
+	width: 300px;
+	margin-top: 1px;
+	margin-left: 10px;
+}
+
+.verticle21{
+	margin: 0 ;
+	color:#000;
+	padding-left: 50px;
+	display: block;
+	width: 70%;
+	
+}
+
+
+.verticle ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 250px;
+    background-color: #f1f1f1;
+    border: 1px solid #555;
+}
+
+.verticle li a{
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.verticle li{
+    text-align: center;
+    border-bottom: 1px solid #555;
+}
+
+.verticle li last-child{
+    border-bottom: none;
+}
+.verticle li a.active1{
+    background-color: #4CAF50;
+    color: white;
+}
+.verticle li a:hover:not(.active1){
+    background-color: #555;
+    color: white;
+}

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC  
+ "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">  
+  
+ <hibernate-mapping>
+<class name="beans.Request" table="Request_Details">
+		<id column="Request_ID" name="Request_Id" type="java.lang.Integer" >
+		<generator class="org.hibernate.id.enhanced.SequenceStyleGenerator">
+		<param name="prefer_sequence_per_entity">true</param>
+		<param name="optimizer">none</param>
+		<param name="increment_size">1</param>
+		<param name="sequence_name">Request_Seq</param>
+		</generator>
+		</id>
+		<property column="HI_ID" name="HID" type="java.lang.Integer" />
+		<property column="EmpId" name="EmpId" type="java.lang.Integer" />
+		<property column="SubmitDate" name="SubmitDate" type="java.sql.Timestamp" />
+		<property column="ApproveDate" name="ApproveDate" type="java.sql.Timestamp" />
+		<property column="SLA_Crossed" name="SLA_Crossed" type="java.lang.String" />
+		<property column="Reason" name="Reason" type="java.lang.String" />
+		<property column="Is_Deleted" name="Is_Deleted" type="java.lang.Character"/>		
+	</class>
+</hibernate-mapping>

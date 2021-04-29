@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC  
+ "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">  
+  
+ <hibernate-mapping>
+<class name="beans.Login" table="Login_Details">
+		<id column="EmpId" name="EmpId" type="java.lang.Integer" />
+		<property name="Password" type="java.lang.String" >
+		<column name="Password"/>
+		</property>
+		<property name="Role" type="java.lang.String" >
+		<column name="Role"></column>
+		</property>
+		<property name="Is_Deleted" type="java.lang.Character" >	
+		<column name="IS_Deleted"></column>	
+		</property>
+	</class>
+</hibernate-mapping>

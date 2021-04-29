@@ -1,0 +1,136 @@
+create table Login_Details(
+EmpId number(10) primary key,
+Password varchar2(15) default 'ChangePwd@123',
+Role varchar2(20) default 'Employee',
+IS_Deleted char(1) default 'N'
+);
+--insert into Login_Details_Temp(EmpId,password) values(1121369,'akash');
+--insert into Login_Details(EmpId) values(1121369);
+--insert into Login_Details values(1121380,'anto','Admin');
+--drop table Login_Details;
+--select * from Login_Details_Temp;
+update LOGIN_DETAILS set password='ChangePwd@123' where empid=1199990;
+create table Employee_Details(
+EmpId number(10) references Login_Details(EmpId),
+EmpName varchar2(50) not null,
+DOB date not null,
+Gender varchar2(6) not null,
+Email varchar2(320) not null,
+Alternate_Email varchar2(320),
+PhoneNo number(15) not null,
+Alternate_PhoneNo number(15),
+IS_Deleted char(1) default 'N',
+primary key(EmpId)
+);
+--drop table Employee_Details;
+--insert into Employee_Details_TEMP values(1199990,'Rohit Kumar Mandal','03-MAY-1995','Male','ROHIT.SPY@gmail.com','ROHIT.KM@tcs.com',7205721942,918389839327,'N');
+--insert into Employee_Details values(1000002,'Bikash','03-MAY-1995','Male','akash@gmail.com','akashsaha@tcs.com',917679275761,8389839327,'N');
+--insert into Employee_Details values(1000003,'Ash','03-MAY-1995','Male','saha@gmail.com','saha@tcs.com',679275761,918389839327,'N');
+--select * from EMPLOYEE_DETAILS_Temp;
+--delete from EMPLOYEE_DETAILS where empid=1121369;
+create table Bank_Details(
+EmpId number(10) references Employee_Details(EmpId) on delete cascade,
+AccNo number(20) not null,
+BankName varchar2(30) not null,
+IFSC varchar2(11) not null,
+IS_Deleted char(1) default 'N',
+primary key(EmpId)
+);
+--drop table bank_details;
+--insert into bank_details_Temp values(1000001,12345,'sbi','sbi1234');
+--insert into bank_details_Temp values(1000002,123456,'sbi','sbi1234');
+--insert into bank_details_Temp values(1000003,123457,'sbi','sbi1234');
+--select * from bank_details_temp;
+create table Policy_Details(
+PolicyNo number(10) primary key,
+StartDate date not null,
+Policy_Period number(2) not null,
+Sum_Insured number(15,2) not null,
+Premium_Amount number(13,2) not null,
+IS_Deleted char(1) default 'N'
+);
+--insert into Policy_Details values(1,'26-NOV-2016',8,10000.00,1236.25,'N');
+--insert into Policy_Details values(2,'12-OCT-2016',2,20000.00,2236.25,'N');
+--insert into Policy_Details values(3,'04-MAY-2016',3,30000.00,3236.25,'N');
+--insert into Policy_Details values(4,'01-DEC-2016',5,40000.00,4236.25,'N');
+--insert into Policy_Details values(5,'11-JUL-2016',13,50000.00,5236.25,'N');
+--drop table policy_details;
+--select * from Policy_Details_Temp;
+create table Dependent_Details(
+Dep_Id number(10) primary key,
+EmpId number(10) references Employee_Details(EmpId) on delete cascade not null,
+Beneficiary_Name varchar2(50) not null,
+Relation varchar2(20) not null,
+DOB date not null,
+Gender varchar2(6) not null,
+IS_Deleted char(1) default 'N'
+);
+--insert into Dependent_details values(2000001,1000001,'Babu','Father','03-FEB-1667','Male','N');
+--insert into Dependent_details values(2000002,1000001,'Tabu','Mother','13-JUL-1676','Female','N');
+--insert into Dependent_details values(2000003,1000002,'Ram','Father','06-FEB-1667','Male','N');
+--insert into Dependent_details values(2000004,1000003,'Debu','Father','23-FEB-1667','Male','N');
+--insert into Dependent_details values(2000005,1000003,'Sanu','Mother','18-FEB-1667','Female','N');
+--drop table dependent_details;
+--select * from dependent_details_Temp;
+create table Health_Insurance_Details(
+HI_ID number(10) primary key,
+Customer_id number(10) not null unique,
+PolicyNo number(10) references Policy_Details(PolicyNo) on delete set null unique,
+Status varchar2(10) default 'Pending',
+Is_Deleted char(1) default 'N'
+);
+insert into Health_insurance_Details(HI_ID,Customer_ID,PolicyNo) values(101,1000001,1);
+insert into Health_insurance_Details(HI_ID,Customer_ID,PolicyNo) values(102,1000002,2);
+insert into Health_insurance_Details(HI_ID,Customer_ID,PolicyNo) values(103,2000001,3);
+insert into Health_insurance_Details(HI_ID,Customer_ID,PolicyNo) values(104,2000002,4);
+insert into Health_insurance_Details(HI_ID,Customer_ID,PolicyNo) values(105,1000003,5);
+update Health_Insurance_Details set Status='Approved' where HI_ID=101;
+--drop table Health_Insurance_Details;
+--select * from Health_Insurance_details_Temp;
+create table Request_Details(
+Request_Id number(10) primary key,
+HI_ID number(10) references Health_Insurance_Details(HI_ID) on delete set null not null unique,
+EmpId number(10) references EMPLOYEE_DETAILS(EmpId) on delete cascade not null,
+SubmitDate timestamp default TO_CHAR(SYSDATE, 'DD-MON-YYYY HH:MI:SS AM'),
+ApproveDate timestamp,
+SLA_Crossed varchar2(5) default 'false',
+Reason varchar2(4000),
+Is_Deleted char(1) default 'N'
+);
+insert into Request_Details(Request_ID,HI_ID,EmpID) values(1,101,1000001);
+insert into Request_Details(Request_ID,HI_ID,EmpID) values(2,102,1000002);
+insert into Request_Details(Request_ID,HI_ID,EmpID) values(3,103,1000001);
+insert into Request_Details(Request_ID,HI_ID,EmpID) values(4,104,1000001);
+insert into Request_Details(Request_ID,HI_ID,EmpID) values(5,105,1000003);
+--drop table Request_Details;
+--select * from Request_Details_temp;
+--SELECT TO_CHAR(SYSDATE, 'DD-MM-YYYY HH:MI:SS AM') "NOW" FROM DUAL;
+--delete from Request_Details_Temp where request_id=1020;
+select * from request_details r inner join health_insurance_details h on r.HI_ID=h.HI_ID where h.status='Pending';
+create sequence Request_Seq
+start with 1000
+increment by 1;
+
+create sequence Policy_Seq
+start with 100
+increment by 1;
+
+create sequence HID_Seq
+start with 10000
+increment by 1;
+
+create sequence dep_seq 
+start with 2000000
+increment by 1;
+
+create table TPA_Details(
+ID number(10) primary key,
+Password varchar2(15)
+);
+--drop table TPA_DETAILS;
+--insert into TPA_Details values(1111111,'Tpa@1234');
+select * from TPA_DETAILS_TEMP;
+
+select dep_seq.nextval from dual;
+
+update HEALTH_INSURANCE_DETAILS_TEMP set status='Rejected';

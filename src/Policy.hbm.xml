@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC  
+ "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">  
+  
+ <hibernate-mapping>
+<class name="beans.Policy" table="Policy_Details">
+		<id column="PolicyNo" name="Policy_No" type="java.lang.Integer" >
+		<generator class="org.hibernate.id.enhanced.SequenceStyleGenerator">
+		<param name="prefer_sequence_per_entity">true</param>
+		<param name="optimizer">none</param>
+		<param name="increment_size">1</param>
+		<param name="sequence_name">Policy_Seq</param>
+		</generator>
+		</id>
+		<property column="StartDate" name="StartDate" type="java.util.Date" />
+		<property column="Policy_Period" name="Policy_Period" type="java.lang.Integer" />
+		<property column="Sum_Insured" name="Sum_Insured" type="java.lang.Double" />
+		<property column="Premium_Amount" name="Premium_Amount" type="java.lang.Double" />
+		<property column="Is_Deleted" name="Is_Deleted" type="java.lang.Character"/>		
+	</class>
+</hibernate-mapping>

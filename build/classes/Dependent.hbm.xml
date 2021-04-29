@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC  
+ "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">  
+  
+ <hibernate-mapping>
+<class name="beans.Dependent" table="Dependent_Details">
+		<id column="Dep_Id" name="DepId" type="java.lang.Integer" >
+		<generator class="org.hibernate.id.enhanced.SequenceStyleGenerator">
+		<param name="prefer_sequence_per_entity">true</param>
+		<param name="optimizer">none</param>
+		<param name="increment_size">1</param>
+		<param name="sequence_name">Dep_Seq</param>
+		</generator>
+		</id>
+		<property column="EmpID" name="EmpId" type="java.lang.Integer" />
+		<property column="Beneficiary_Name" name="BeneName" type="java.lang.String" />
+		<property column="Relation" name="Relation" type="java.lang.String" />
+		<property column="Gender" name="Gender" type="java.lang.String" />
+		<property column="DOB" name="dob" type="java.util.Date" />
+		<property column="Is_Deleted" name="Is_Deleted" type="java.lang.Character"/>		
+	</class>
+</hibernate-mapping>

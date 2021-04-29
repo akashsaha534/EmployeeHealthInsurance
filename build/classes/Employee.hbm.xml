@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC  
+ "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">  
+  
+ <hibernate-mapping>
+<class name="beans.Employee" table="Employee_Details">
+		<id column="EmpId" name="EmpId" type="java.lang.Integer" />
+		<property column="EmpName" name="EmpName" type="java.lang.String" />
+		<property column="DOB" name="DOB" type="java.util.Date" />
+		<property column="Gender" name="Gender" type="java.lang.String" />
+		<property column="Email" name="Email" type="java.lang.String" />
+		<property column="Alternate_Email" name="Alternate_Email" type="java.lang.String" />
+		<property column="PhoneNo" name="PhoneNo" type="java.lang.Long" />
+		<property column="Alternate_PhoneNo" name="Alternate_PhoneNo" type="java.lang.Long" />
+		<property column="Is_Deleted" name="Is_Deleted" type="java.lang.Character"/>		
+	</class>
+</hibernate-mapping>
