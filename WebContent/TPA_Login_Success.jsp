@@ -27,11 +27,11 @@
 				<%}else{%>
 				<h1>TPA Values</h1>
 				<p>Health insurance specialists carry many different responsibilities,which include reviewing employee details
-					using their request number.They examine the details and approve or reject the requests of employee and as well as thier dependent.
+					using their request number. They examine the details and approve or reject the requests of employee their dependents as well.
 					TPA can also give reason for rejection of request(if any). </p>
 					<p>Other responsibilities of a TPA is he/she can add any employee.</p>
 					<p>They can view pending request as well as rejected request and approved request.</p>
-					<p>According to the details of employees and their dependents,TPA will take action.</p>
+					<p>According to the details of employees and their dependents, TPA will take action.</p>
 					<%} %>
 				<br><br><br><br><br><br><br><br><br>
 			</div>
